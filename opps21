@@ -1,0 +1,60 @@
+//************OOPS********
+
+//OOPS is not the programming language its just a approach to make our program, apne program me convententional pitfall ko dur krne k liye use hota  
+//struct is powerfull as usme array, koi bhi datatype daal sakte
+//but struct me hum data hide ni kr sakte us k liye oops ka use kr k class bnana pdhegi
+//2) struct me hum fuction nhi dal sakte
+
+//**********making class***********
+
+#include<iostream>
+using namespace std;
+ 
+
+ class Employee{
+     private :
+     int a, b, c;
+
+     public:
+     int d,e;
+
+     void setData(int a1, int b1, int c1); //Declaration ye compiler ko btara hai ki ye fuction bad me program me milega
+
+     void getData(){
+         cout<<"The value of a is "<<a<<endl;
+         cout<<"The value of b is "<<b<<endl;
+         cout<<"The value of c is "<<c<<endl;
+         cout<<"The value of d is "<<d<<endl;
+         cout<<"The value of e is "<<e<<endl;
+     }
+ };
+
+     void Employee :: setData(int a1, int b1, int c1)
+     {
+         a=a1;
+         b=b1;
+         c=c1;
+     }
+ 
+ int main(){
+     Employee harry ; //harry yha object hai
+    // harry.a=76; ye private hai to apne function k andar he access hoga aise change ya access nhi kr sakte
+    
+
+    harry.d=34;
+    harry.e=44;
+    harry.setData(1,2,3);
+    harry.getData();
+    return 0;
+ }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+********************Output**************************
+
+The value of a is 1 
+The value of b is 2 
+The value of c is 3 
+The value of d is 34
+The value of e is 44
+
+ 
