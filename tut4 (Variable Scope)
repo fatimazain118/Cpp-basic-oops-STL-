@@ -1,0 +1,28 @@
+#include<iostream>
+
+// precidence of local variable is more 
+
+using namespace std;
+int glo =6;
+void sum(){
+    cout<< glo;
+}
+
+int main(){
+    // int a = 2;
+    // int b = 3;
+    // int a=3, b=4;
+    // float pi=3.14;
+    int glo = 3;
+    glo = 10;
+    sum();
+cout<<"\n Value of glo is "<<glo;
+    // cout<<"This is tutorial 4. Here value of a is "<<a<<". and value of b is "<<b;
+    // cout<<"\nThis is the value of pi: "<<pi;
+    return 0;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***********************************Output**************************
+
+6
+Value of glo is 10
