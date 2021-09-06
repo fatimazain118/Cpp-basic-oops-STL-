@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+main()
+{
+    // What is a pointers : data type which holds the address of others datatype
+
+    int a = 3;
+    int *b = &a; //b me a ka address aya hai
+    cout << "value of address a" << b << endl;
+    cout << "value of address a " << &a << endl;
+
+    cout << "value at address b " << *b << endl; //DEREFERENCE OPERATOR
+
+    //a is a variable jis ko memory(RAM) me space milegi.
+
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+******************************************************Output**********************************************************
+
+value of address a0x61ff08
+value of address a 0x61ff08
+value at address b 3
