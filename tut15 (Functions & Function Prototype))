@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+
+                      //type function - name (arguments )--syntax
+                      // int sum(int a, int b); //--> Acceptable
+                      // int sum(int a, b); //--> Not Acceptable 
+                      //int sum(int, int); //--> Acceptable 
+
+int sum(int a, int b);                         // Function Declaration(Function prototype)
+
+int main(){
+int num1,num2;
+
+cout<<"Enter num1"<<endl;
+cin>>num1;
+
+cout<<"Enter num2"<<endl;
+cin>>num2;
+
+cout<<"Sum of num1 and num2 is : "<<sum(num1,num2);                   //Functions are the main part of top-down structured programming. We break the code into small pieces and make functions of that code. Functions help us to reuse the code easily. 
+                                                                      //Here num1 and num2 are actual parameters
+return 0;
+
+}
+
+sum(int a, int b){                                           //The function prototype is the template of the function which tells the details of the function e.g(name, parameters) to the compiler. Function prototypes help us to define a function after the function call.
+int c = a + b;                                               //a and b are formal parameter
+return c;
+} 
