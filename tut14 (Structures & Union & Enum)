@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+
+ struct employee{                   //The structure is a user-defined data type that is available in C++. Structures are used to combine different types of data types, just like an array is used to combine the same type of data types
+        int ID;                            
+        float salary;                //or we can use typedef struct employee{define variables}ep;
+        char favchar;
+    }; //ep;
+
+int main(){
+   struct employee zainab;              //then we can use like ep(in place of struct employee) zainab;
+
+    zainab.ID = 1;
+    zainab.salary= 1200;
+    zainab.favchar = 'c';
+    cout<<"ID of employee is : "<<zainab.ID<<endl;
+    cout<<"salary of employee is : "<<zainab.salary<<endl;
+    cout<<"favchar of employee is : "<<zainab.favchar<<endl;
+
+    return 0;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***************************Output************************************
+
+ID of employee is : 1
+salary of employee is : 1200
+favchar of employee is : c
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+***************************Union****************************
+
+#include <iostream>
+using namespace std;
+union money
+{
+ int rice;
+ char car;
+ float dollar;
+
+};
+
+int main(){
+union money m1;
+m1.rice = 2;                         //We can use one variable at a time
+cout<<m1.rice;
+    return 0;
+}
+
+-------------------------------------------------------------------------------------------------
+***********************Output********************************
+
+2
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+union money                         //Unions are similar to structures but they provide better memory management then structures.  Unions use shared memory so only 1 variable can be used at a time.
+{
+ int rice;
+ char car;
+ float dollar;
+
+};
+
+int main(){
+union money m1;
+m1.rice = 2;  
+m1.car  = 'c';       //This will you garbage value
+cout<<m1.rice;
+    return 0;
+}
+
+-------------------------------------------------------------------------------------------------
+***********************Output********************************
+
+99
+
+-----------------------------------------------------------------------------------------------------------------------
+**************************enum*****************************
+
+#include <iostream>
+using namespace std;
+int main(){
+    enum Meal{ breakfast, lunch, dinner};            //Enums are user-defined types which consist of named constants. Enums are used to make the program more readable
+    Meal m1 = lunch;
+    cout<<m1;
+    return 0;
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+**********************Output******************************************************
+
+1
