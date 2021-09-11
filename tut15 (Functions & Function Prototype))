@@ -25,5 +25,5 @@ return 0;
 
 sum(int a, int b){                                           //The function prototype is the template of the function which tells the details of the function e.g(name, parameters) to the compiler. Function prototypes help us to define a function after the function call.
 int c = a + b;                                               //a and b are formal parameter
-return c;
+return c;                                                    //If we dont use function prototype we have to define our function before main()
 } 
