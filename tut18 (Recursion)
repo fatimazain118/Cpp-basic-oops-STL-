@@ -1,6 +1,6 @@
 #include<iostream>
-using namespace std;
-int fib( int n){
+using namespace std; 
+int fib( int n){                                             //When a function calls itself it is called recursion and the function which is calling itself is called a recursive function. The recursive function consists of a base case and recursive condition. It is very important to add a base case in recursive function otherwise recursive function will never stop executing
 if (n<2){
 return 1;
 }
