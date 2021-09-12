@@ -1,0 +1,25 @@
+#include<iostream>
+using namespace std;
+int fib( int n){
+if (n<2){
+return 1;
+}
+else
+return fib(n-1) + fib(n-2);
+
+}
+
+int main(){
+    int a;
+    cout<<"Enter the position"<<endl;
+    cin>>a;
+    cout<<"The series till "<<a<<" is :"<<fib(a);
+    return 0;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+***************************************Output***************************************
+
+Enter the position
+5
+The series till 5 is :8
