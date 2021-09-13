@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int sum(int x, int y, int z)                                                     //Function overloading is a process to make more than one function with the same name but different parameters, numbers, or sequence
+{
+    cout << "Using function with 3 arguments : " << endl;
+    return x + y + z;
+}
+
+int sum(int x, int y)
+{
+    cout << "Using function with 2 arguments :" << endl;
+    return x + y;
+}
+
+int main()
+{
+    cout << "Sum of 3 and 4 is : " << sum(3, 4) << endl;
+    cout << "Sum of 3,4 and 5 is :" << sum(3, 4, 5);
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+*****************Output*******************
+
+
+Using function with 2 arguments :
+Sum of 3 and 4 is : 7
+Using function with 3 arguments :
+Sum of 3,4 and 5 is :12
