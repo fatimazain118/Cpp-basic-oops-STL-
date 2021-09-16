@@ -18,7 +18,7 @@ using namespace std;
      public:
      int d,e;
 
-     void setData(int a1, int b1, int c1); //Declaration ye compiler ko btara hai ki ye fuction bad me program me milega
+     void setData(int a1, int b1, int c1);                      //Declaration ye compiler ko btara hai ki ye fuction bad me program me milega
 
      void getData(){
          cout<<"The value of a is "<<a<<endl;
@@ -37,8 +37,8 @@ using namespace std;
      }
  
  int main(){
-     Employee harry ; //harry yha object hai
-    // harry.a=76; ye private hai to apne function k andar he access hoga aise change ya access nhi kr sakte
+     Employee harry ;                        //harry yha object hai
+                                            // harry.a=76; ye private hai to apne function k andar he access hoga aise change ya access nhi kr sakte ---> Show error
     
 
     harry.d=34;
