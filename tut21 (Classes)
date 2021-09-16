@@ -11,7 +11,7 @@
 using namespace std;
  
 
- class Employee{
+ class Employee{                                              //Classes are user-defined data-types and are a template for creating objects. Classes consist of variables and functions which are also called class members.
      private :
      int a, b, c;
 
@@ -37,7 +37,7 @@ using namespace std;
      }
  
  int main(){
-     Employee harry ;                        //harry yha object hai
+     Employee harry ;                        //we created an object “harry” of the class “employee
                                             // harry.a=76; ye private hai to apne function k andar he access hoga aise change ya access nhi kr sakte ---> Show error
     
 
