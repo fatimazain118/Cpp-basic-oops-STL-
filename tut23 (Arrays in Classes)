@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Shop
+{
+    int itemId[100];                                            //Arrays are used to store multiple values of the same type. An array is very helpful when multiple variables are required, instead of making multiple variables one array can be used which can store multiple values. Array stores data in sequential order.
+    int itemPrice[100];
+    int counter;                                               //counter isliye bnaya hai ki wo count krta reh ki kitne item array me already add ho chuke hai.
+
+public:
+    void initCounter(void)
+    {
+        counter = 0;
+    }
+
+    void setPrice(void);
+    void display(void);
+};
+
+void Shop ::setPrice(void)
+{
+    cout << "Enter the itemId "<<counter+1 << endl;
+    cin >> itemId[counter];
+    cout << "Enter Price of your item" << endl;
+    cin >> itemPrice[counter];                                   //counter likha hai next time value increase hojai pehle wale me overwrite na ho
+
+    counter++;
+}
+
+void Shop ::display(void)
+{
+    for (int i = 0; i < counter; i++)
+    {
+        cout << "The price of your itemId " << itemId[i]<< " is "<< itemPrice[i] << endl;
+    }
+}
+
+int main()
+{
+    Shop dukaan;
+    dukaan.initCounter();
+    dukaan.setPrice();
+    dukaan.setPrice();
+    dukaan.setPrice();
+    dukaan.display();
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+******************************Output***********************************
+
+Enter the itemId 1
+1222
+Enter Price of your item
+200
+Enter the itemId 2
+1333
+Enter Price of your item
+700
+Enter the itemId 3
+2345
+Enter Price of your item
+500
+The price of your itemId 1222 is 200
+The price of your itemId 1333 is 700
+The price of your itemId 2345 is 500
