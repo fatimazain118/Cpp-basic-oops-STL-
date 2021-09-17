@@ -49,6 +49,7 @@ void binary ::chk_bin(void)
 
 void binary ::ones_comp(void)
 {
+   chk_bin();                          //Nesting of member function (Internally it will work bahr means mains se call krne ki zarurt nhi
     for (int i = 0; i < s.length(); i++)
     {
         if (s.at(i) == '0')
@@ -78,7 +79,7 @@ int main()
     binary b;
 
     b.read();
-    b.chk_bin();
+    // b.chk_bin();
     b.display();
     b.ones_comp();
     b.display();
