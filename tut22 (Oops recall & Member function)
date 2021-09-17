@@ -23,7 +23,7 @@ class binary
     string s;
 
 public:
-    void read(void);
+    void read(void);                      //Member functions--> functions that are defined within the class
     void chk_bin(void);
     void ones_comp(void);
     void display(void);
@@ -39,7 +39,7 @@ void binary ::chk_bin(void)
 {
     for (int i = 0; i < s.length(); i++)
     {
-        if (s.at(i) != '0' && s.at(i) != '1') 
+        if (s.at(i) != '0' && s.at(i) != '1')                //string at position i ---> s.at(i)
         {
             cout << "Incorrect binary no." << endl;
             exit(0);
@@ -49,7 +49,7 @@ void binary ::chk_bin(void)
 
 void binary ::ones_comp(void)
 {
-   chk_bin();                          //Nesting of member function (Internally it will work bahr means mains se call krne ki zarurt nhi
+   chk_bin();                                       //Nesting of member function (Internally it will work bahr means mains se call krne ki zarurt nhi
     for (int i = 0; i < s.length(); i++)
     {
         if (s.at(i) == '0')
