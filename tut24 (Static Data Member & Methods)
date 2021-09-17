@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+    int Id;
+    static int count;                    //Static Data Member (Variable)When a static data member is created, there is only a single copy of the data member which is shared between all the objects of the class.
+
+public:
+    void setData(void);
+    void getData(void);
+    static void getCount(void)
+    {
+       // cout<<id;                                   //throws error as it access only static data member
+    cout<<"The value of count is : "<<count<<endl;
+    }
+};
+
+void Employee ::setData(void)
+{
+    cout << "Enter the Employee's Id" << endl;
+    cin >> Id;
+    count++;
+}
+void Employee ::getData(void)
+{
+    cout << "Employee's Id is :" << Id<<" and his employee no. is "<<count << endl;
+}
+
+int Employee :: count =1000;                                                                //Initialising with 1000 as default it have 0
+int main()
+{
+    Employee zainab, fatima, zain;
+    zainab.setData();
+    zainab.getData();
+    Employee::getCount();    //Static Member fuction or methods
+
+    fatima.setData();
+    fatima.getData();
+    Employee::getCount();
+
+    zain.setData();
+    zain.getData();
+    Employee::getCount();
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------------------------
+***************************Output****************************
+
+Enter the Employee's Id
+1
+Employee's Id is :1 and his employee no. is 1001
+The value of count is : 1001
+Enter the Employee's Id
+2
+Employee's Id is :2 and his employee no. is 1002
+The value of count is : 1002
+Enter the Employee's Id
+4
+Employee's Id is :4 and his employee no. is 1003
+The value of count is : 1003
