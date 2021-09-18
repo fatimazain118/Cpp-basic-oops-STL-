@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+    int Id;
+
+public:
+    void setData(void);
+    void getData(void);
+};
+
+void Employee ::setData(void)
+{
+    cout << "Enter the Id of an Employee" << endl;
+    cin >> Id;
+}
+void Employee ::getData(void)
+{
+    cout << "Employee Id is :" << Id << endl;
+}
+
+int main()
+{
+    Employee fb[4];                          //Array of objects (if we have 4 employee make array and store)
+    for (int i = 0; i < 3; i++)
+    {
+        fb[i].setData();
+        fb[i].getData();
+    }
+    return 0;
+    
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    *********************Output****************************************
+    
+Enter the Id of an Employee
+123
+Employee Id is :123
+Enter the Id of an Employee
+345
+Employee Id is :345
+Enter the Id of an Employee
+567
+Employee Id is :567
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*********************Passing Object as Function Argument****************
+
+#include <iostream>
+using namespace std;
+
+class complex
+{
+public:
+    int a, b;
+
+    void setData(int v1, int v2)
+    {
+        a = v1;
+        b = v2;                                          //directly a and b isliye use nhi kia qki wo good programming practice nhi
+    }
+    void setDataBySum(complex o1, complex o2)            //Method setDataBySum
+    {
+        a = o1.a + o2.a;
+        b = o1.b + o2.b;
+    }
+    void printComplexNumber()
+    {
+        cout << "Your Complex No. is " << a << " + " << b << "i" << endl;
+    }
+};
+
+int main()
+{
+    complex c1, c2, c3;
+    c1.setData(1, 3);
+    c1.printComplexNumber();
+
+    c2.setData(2, 4);
+    c2.printComplexNumber();
+
+    c3.setDataBySum(c1, c2);
+    c3.printComplexNumber();
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------------------------------
+********************Output****************************************
+
+Your Complex No. is 1 + 3i
+Your Complex No. is 2 + 4i
+Your Complex No. is 3 + 7i
