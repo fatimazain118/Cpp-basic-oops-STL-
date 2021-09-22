@@ -1,0 +1,116 @@
+#include <iostream>
+using namespace std;
+
+class Y;     //Done Forward declaration of class Y to tell compiler that Y used in class X has been declare further in the in program
+
+class X
+{
+    int data;
+
+public:
+    void setValue(int value)
+    {
+        data = value;
+    }
+    friend void add(X, Y);    //Declaring that void add is a fuction which is friend function taking argument frm class X and Y
+};
+class Y
+{
+    int num;
+
+public:
+    friend void add(X, Y);
+    void setValue(int value)
+    {
+        num = value;
+    }
+};
+
+void add(X o1, Y o2)
+{
+    cout << "Summing data of class X and Y gives :" << o1.data + o2.num << endl;
+}
+
+int main()
+{
+    X x;          //object “x” of the data type “X” is declared
+    x.setValue(1);
+
+    Y y;
+    y.setValue(2);
+    add(x, y);            //function “add” is called and the objects “x” and “y” are passed to it. 
+    return 0;
+}
+______________________________________________________________________________________________________________________________________
+****************Output*********************
+
+Summing data of class X and Y gives :3
+___________________________________________________________________________________________________________________________________________________
+
+#include <iostream>
+using namespace std;
+class c2;
+
+class c1
+{
+    int var1;
+    friend void swap(c1 &, c2 &);             //friend function “swap” which takes reference variables “c1” and “c2” as parameters.
+
+public:
+    void setData(int a)
+    {
+        var1 = a;
+    }
+    void Display(void)
+    {
+        cout << var1 << endl;
+    }
+};
+class c2
+{
+    int var2;
+    friend void swap(c1 &, c2 &);
+
+public:
+    void setData(int a)
+    {
+        var2 = a;
+    }
+    void Display(void)
+    {
+        cout << var2 << endl;
+    }
+};
+
+void swap(c1 &x, c2 &y)
+{
+    int temp = x.var1;
+    x.var1 = y.var2;
+    y.var2 = temp;
+}
+
+int main()
+{
+    c1 oc1;          // object “oc1” of the data type “c1” is declared
+    c2 oc2;
+    cout << "Value of var1 and var2 before swap are :" << endl;
+    oc1.setData(1);
+    oc1.Display();
+
+    oc2.setData(2);
+    oc2.Display();
+    swap(oc1, oc2);
+    cout << "Swap values of var1 and var2 are :" << endl;
+    oc1.Display();
+    oc2.Display();
+    return 0;
+}
+_______________________________________________________________________________________________________________________________________________________
+*****************Output********************
+
+Value of var1 and var2 before swap are :
+1
+2
+Swap values of var1 and var2 are :
+2
+1
