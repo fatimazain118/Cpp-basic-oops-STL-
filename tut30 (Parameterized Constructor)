@@ -1,0 +1,90 @@
+//Parameterized constructors are those constructors that take one or more parameters. Default constructors are those constructors that take no parameters. The main things to note here are that constructors are written in the public section of the class
+
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+    Complex(int, int); // Parameterized Constructor (As it takes two parameter)
+    void print()
+    {
+        cout << "Complex no. is " << a << " + " << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(int x, int y)
+
+{
+    a = x;
+    b = y;
+}
+
+int main()
+{
+    //Implicit call value kaise de uska tarika
+    Complex c1(4, 5);
+    c1.print();
+
+    //Explicit call
+    Complex c2 = Complex(6,7);
+c2.print();
+
+    return 0;
+}
+_____________________________________________________________________________________________________________________________
+******************Output*************************
+
+Complex no. is 4 + 5i
+Complex no. is 6 + 7i
+______________________________________________________________________________________________________________________________________
+***************Distance Between Points using constructors and friend function**************************
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+class Point
+{
+    int x, y;
+    friend int Distance_Between_Points(Point, Point);
+
+public:
+    Point(int, int);
+    void Display(void)
+    {
+        cout << "Point is :" << x << "," << y << endl;
+    }
+};
+
+Point ::Point(int a, int b)
+{
+    x = a;
+    y = b;
+}
+int Distance_Between_Points(Point d1, Point d2)
+{
+    int x_diff = d2.x - d1.x;
+    int y_diff = d2.y - d1.y;
+    int Distance = sqrt(pow(x_diff, 2) + pow(y_diff, 2));
+    cout << "Distance between points is: " << Distance;
+}
+
+int main()
+{
+    Point p(1, 2);
+    p.Display();
+    Point q(1, 2);
+    q.Display();
+    Distance_Between_Points(p, q);
+
+    return 0;
+}
+________________________________________________________________________________________________________________________
+***********************Output***************************
+
+Point is :1,2
+Point is :1,2
+Distance between points is: 0
