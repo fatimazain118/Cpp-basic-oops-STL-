@@ -1,0 +1,33 @@
+Constructors with Default Arguments in C++
+Default arguments of the constructor are those which are provided in the constructor declaration. 
+If the values are not provided when calling the constructor the constructor uses the default arguments automatically. 
+
+#include <iostream>
+using namespace std;
+
+class Simple
+{
+    int data1, data2, data3;
+
+public:
+    Simple(int a, int b = 2, int c = 7)    
+    {
+        data1 = a;
+        data2 = b;
+        data3 = c;
+    }
+    void Display(void)
+    {
+        cout << "The value of data1, data2 and data3 is :" << data1 << "," << data2 << " and " << data3;
+    }
+};
+int main()
+{
+    Simple s(1);
+    s.Display();
+    return 0;
+}
+_______________________________________________________________________________________________________________________
+*********************Output******************
+
+The value of data1, data2 and data3 is :1,2 and 7
