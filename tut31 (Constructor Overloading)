@@ -1,0 +1,51 @@
+Constructor Overloading in C++
+-->Constructor overloading is a concept in which one class can have multiple constructors with different parameters. The main thing to note here is that the constructors will run according to the arguments,
+for example if a program consists of 3 constructors with 0, 1, and 2 arguments, so if we pass 1 argument to the constructor the compiler will automatically run the constructor which is taking 1 argument.
+
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+    Complex(int);                       //Constructor by default setting value of b=0
+    Complex(int x, int y)              // Parametrirized Constructor
+    {
+        a = x;
+        b = y;
+    }
+    Complex()       //Default Constructor
+    {
+        a = 0;
+        b = 0;
+    }
+    void Display(void)
+    {
+        cout << "Your complex no. is : " << a << " +" << b << "i" << endl;
+    }
+};
+
+Complex ::Complex(int p)                            //Name should be same as of class
+{
+    a = p;
+    b = 0;
+}
+
+int main()
+{
+    Complex c1(3, 4);
+    c1.Display();
+    Complex c2(3);
+    c2.Display();
+    Complex c3;
+    c3.Display();
+    return 0;
+}
+___________________________________________________________________________________________________________
+***********Output******************
+
+Your complex no. is : 3 +4i
+Your complex no. is : 3 +0i
+Your complex no. is : 0 +0i
