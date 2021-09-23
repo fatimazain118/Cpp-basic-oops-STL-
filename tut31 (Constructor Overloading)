@@ -10,8 +10,8 @@ class Complex
     int a, b;
 
 public:
-    Complex(int);                       //Constructor by default setting value of b=0
-    Complex(int x, int y)              // Parametrirized Constructor
+    Complex(int);                       //Parameterized Constructor by default setting value of b=0
+    Complex(int x, int y)              // Parameterized Constructor
     {
         a = x;
         b = y;
