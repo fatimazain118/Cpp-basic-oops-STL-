@@ -1,6 +1,6 @@
 /* Constructors in C++
 
-A constructor is a special member function with the same name as the class. Constructors are used to initialize the objects of its class
+A constructor is a special member function with the same name as the class. Constructors are used to initialize the objects(like a and b ki value set krne ki help krta, bina setData function bnai) of its class
 
 Important Characteristics of Constructors in C++
 
