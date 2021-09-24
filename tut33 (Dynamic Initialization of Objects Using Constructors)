@@ -1,0 +1,77 @@
+Dynamic Initialization of Objects Using Constructors
+The dynamic initialization of the object means that the object is initialized at the runtime. 
+Dynamic initialization of the object using a constructor is beneficial when the data is of different formats.
+
+#include<iostream>
+using namespace std;
+
+class Bankdeposit
+{
+    int principal;
+    int years;
+    float interestRate;
+    float returnValue;
+    public:
+    Bankdeposit(){}
+    Bankdeposit(int p, int y, int r);
+    Bankdeposit(int p, int y, float R);
+    void Display()
+    {
+        cout<<"Principal amount was "<<principal
+        <<" returnValue after "<<years
+        <<" years is :"<<returnValue<<endl;
+    }
+    
+};
+Bankdeposit :: Bankdeposit(int p, int y , int r)
+{
+    principal = p;
+    years= y;
+    interestRate = float(r)/100;
+    returnValue = principal;
+    for(int i = 0; i<y; i++)
+    {
+        returnValue = returnValue * (1 + interestRate);
+    }
+}
+Bankdeposit :: Bankdeposit(int p, int y , float R)
+{
+    principal = p;
+    years= y;
+    interestRate = R;
+    returnValue = principal;
+    for(int i = 0; i<y; i++)
+    {
+        returnValue = returnValue * (1 + interestRate);
+    }
+}
+int main()
+{
+    Bankdeposit bd1 ,bd2, bd3;      //1st the object “bd1”, “bd2”, and “bd3” of the data type “BankDeposit” are created.
+    int p;
+    int y;
+    float R;
+    int r;
+    cout<<"Enter p, y, r"<<endl;
+    cin>>p>>y>>r;                     // the variables “p”, “y”, and”r” are taken from the user on the runtime.
+    bd1 = Bankdeposit(p,y,r);
+    bd1.Display();
+
+    cout<<"Enter p, y, R"<<endl;
+    cin>>p>>y>>R;
+    bd2 = Bankdeposit(p,y,R);
+    bd2.Display();
+    return 0;
+}
+__________________________________________________________________________________________
+**************Output**************
+
+Enter p, y, r
+100
+1
+3                                                    //first integer is passed
+Principal amount was 100 returnValue after 1 years is :103
+Enter p, y, R
+100
+1
+.03
