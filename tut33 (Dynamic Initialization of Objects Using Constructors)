@@ -12,7 +12,7 @@ class Bankdeposit
     float interestRate;
     float returnValue;
     public:
-    Bankdeposit(){}
+    Bankdeposit(){}                     //default constructor bnana pdhega nhi to error dega, qki agr hm extra bd3 object bnare
     Bankdeposit(int p, int y, int r);
     Bankdeposit(int p, int y, float R);
     void Display()
