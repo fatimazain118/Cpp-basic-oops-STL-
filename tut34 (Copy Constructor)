@@ -1,0 +1,75 @@
+Copy Constructor in C++
+A copy constructor is a type of constructor that creates a copy of another object.
+If we want one object to resemble another object we can use a copy constructor.
+If no copy constructor is written in the program compiler will supply its own copy constructor.
+
+#include <iostream>
+using namespace std;
+
+class Number
+{
+    int x;
+
+public:
+    Number()
+    {
+        x = 0;
+    }              //default constructor bnana pdhega jab hum extra objects bnare aur unko yha declare nhi krre
+
+    Number(int a)
+    {
+        x = a;
+    }
+
+    //***********Making copy Constructor************* 
+
+     Number(Number &obj)                        //isko Number class k object ka reference chahiye, constructor of the “number” class is defined which takes its own reference object as a parameter and assigns values to the data members “a”.
+     {
+         cout<<"Copy constructor is called"<<endl;
+         x = obj.x;
+     }
+    
+
+
+    //************agr copy constructor ko comment out kr dia to C++ ka apna default copy constructor chalta hai
+    void display()
+    {
+        cout << "The no. for this object is " << x << endl;
+    }
+};
+
+int main()
+{
+    Number n, p, q(2), z2;
+    n.display();
+    p.display();
+    q.display();
+
+    //z1 should resembles like n or p or q
+
+Number z1(q);              //copy constructor invoked
+z1.display();
+
+
+z2 = q;                 //copy constructor not invoked coz object pehle he bna dia hai yha bss assignment krre hai
+z2.display();
+
+
+Number z3 = q;             //copy constructor invoked because the object “z3” is being created.
+z3.display();
+
+    return 0;
+}
+ ____________________________________________________________________________________________________________________________________________
+ ******************Output***************
+ 
+The no. for this object is 0
+The no. for this object is 0
+The no. for this object is 2
+Copy constructor is called
+The no. for this object is 2
+The no. for this object is 2
+Copy constructor is called
+The no. for this object is 2
+ 
+}
