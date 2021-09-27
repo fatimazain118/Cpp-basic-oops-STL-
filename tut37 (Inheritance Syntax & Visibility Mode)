@@ -1,0 +1,71 @@
+Inheritance is a process of inheriting attributes of the base class by a derived class.
+
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+
+public:
+    int id;
+    float salary;
+    Employee(int inpID)
+    {
+        id = inpID;
+        salary = 34.0;
+    }
+    Employee() {}                           //default constructor is called by programmer class
+};
+
+//**********Derived class syntax**********
+
+/*
+class {{derived-class-name}} : {{visibility-mode}} {{base-class-name}}
+{
+    class member/methods/etcs..           //Member is a generic term that encompasses the following: Constructors, Methods, Properties, Fields, and Events.
+                                           //A method is a function that is associated with an instance of a class or a static class.
+}
+
+Note:
+1. Default visibility mode is private
+2. Public Visibility Mode: Public members of the base class becomes Public members of the derived class
+3. Private Visibility Mode: Public members of the base class becomes Private members of the derived class
+4. Private members are never inherited
+*/
+
+//Creating a Programme class derived from Employee Base class
+
+class Programmer : public Employee                       //ye inherit hua hai Employee se to us k liye ek Employee ka default constructor ko call krega
+{
+public:
+    int lang = 9;
+    Programmer(int inpID)
+    {
+        id = inpID;
+    }
+    void getData()
+    {
+        cout << id << endl;
+    }
+};
+
+int main()
+{
+    Employee harry(1), rohan(2);
+    cout << harry.salary << endl;
+    cout << rohan.salary << endl;
+    Programmer p1(1); // object of class Programmer
+    cout << p1.lang << endl;
+    p1.getData();
+
+    //   cout << p1.id<<endl;  //id Programmer ki private member hai coz hmne privately inherite kia hai but isse public krne se error nhi aiga
+
+    return 0;
+}
+______________________________________________________________________________________________________________________________________________________________
+*************Output*****************
+
+34
+34
+9
+1
