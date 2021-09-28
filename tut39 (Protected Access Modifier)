@@ -1,0 +1,38 @@
+Protected access modifiers are similar to the private access modifiers but protected access modifiers can be accessed in the derived class whereas private access 
+modifiers cannot 
+
+
+/*
+For a protected member:
+                          Public derivation   Private Derivation   Protected Derivation
+    1. Private members      Not Inherited       Not Inherited       Not Inherited
+    2. Protected members    Protected           Private             Protected
+    3. Public members       Public              Private             Protected
+*/
+
+#include <iostream>
+using namespace std;
+
+class Base
+{
+
+public:
+    int b;
+
+protected:
+    int a = 2;
+};
+
+class Derived : protected Base
+{
+    int c;
+};
+
+int main()
+{
+    Derived d;
+    Base b;
+    cout << d.a;   //shows error coz protected inherit in protected remains protected
+    return 0;
+}
+________________________________________________________________________________________________________________
