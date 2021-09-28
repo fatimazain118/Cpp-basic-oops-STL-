@@ -1,0 +1,70 @@
+Single Inheritance in C++
+Single inheritance is a type of inheritance in which a derived class is inherited with only one base class
+
+#include <iostream>
+using namespace std;
+
+class Base
+{
+    int data1;
+
+public:
+    int data2;
+    void setData();
+    int getData1();
+    int getData2(); //these are methods of the class
+};
+
+void Base ::setData(void)
+{
+    data1 = 10;
+    data2 = 20;
+}
+
+int Base ::getData1()
+{
+    return data1;
+}
+
+int Base ::getData2()
+{
+    return data2;
+}
+
+//Derived class
+
+class Derived : public Base                 //agar is ko yha private kia to hum setData access nhi kr paingye qki bydefault wo inherite ho kr private member bn jata
+{
+    int data3;
+
+public:
+    void process();
+    void display();
+};
+
+void Derived ::process()
+{
+    setData();                       //jab private mode me inherit hoga to derived class k publib member l andr se call ho skta bss main se nhi
+    data3 = data2 * getData1();
+}
+
+void Derived ::display()
+{
+    cout << "Data1 is " << getData1() << endl;    //Data1 private tha to wo inherite to hoga nhi to hm base class k kisi member function k though excess kr skte hai, to function inherit hogya mtlb data us ka inherit hogya
+    cout << "Data2 is " << data2 << endl;
+    cout << "Data3 is " << data3 << endl;
+}
+int main()
+{
+    Derived der;
+    //  der.setData();               //Base class ka public member public mode me inherit hua hai agar private mode me hote to private bnte hm yha phr inhe call nhi kr pate
+    der.process();
+    der.display();
+    return 0;
+}
+___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+*************************Output*****************
+
+Data1 is 10
+Data2 is 20
+Data3 is 200
