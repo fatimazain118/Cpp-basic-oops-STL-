@@ -1,0 +1,77 @@
+Multiple Inheritances in C++
+Multiple inheritances are a type of inheritance in which one derived class is inherited with more than one base class. 
+
+/*
+ Syntax for inheriting in multiple inheritance
+ class DerivedC: visibility-mode base1, visibility-mode base2
+ {
+      Class body of class "DerivedC"
+ };
+*/
+
+#include <iostream>
+using namespace std;
+
+class base1
+{
+protected:
+    int value1;
+
+public:
+    void set_value1(int a)
+
+    {
+        value1 = a;
+    }
+};
+
+class base2
+{
+protected:
+    int value2;
+
+public:
+    void set_value2(int b)
+    {
+        value2 = b;
+    }
+};
+
+class Derived : public base1, public base2
+{
+public:
+    void show()
+    {
+        cout << "Value 1st is :" << value1 << endl;
+        cout << "Value 2nd is :" << value2 << endl;
+        cout << "Sum of 1st value and 2nd value is :" << value1 + value2 << endl;
+    }
+};
+
+int main()
+{
+    Derived d;
+    d.set_value1(3);
+    d.set_value2(2);
+    d.show();
+    return 0;
+}
+
+
+/*
+The inherited derived class will look something like this:
+Data members:
+    value1 --> protected
+    value2 --> protected
+
+Member functions:
+    set_value1() --> public
+    set_value2() --> public
+    show() --> public
+*/_
+_______________________________________________________________________________________________________
+*********************Output*****************
+
+Value 1st is :3
+Value 2nd is :2
+Sum of 1st value and 2nd value is :5
