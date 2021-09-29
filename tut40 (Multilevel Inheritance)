@@ -1,0 +1,80 @@
+Multilevel Inheritance in C++
+Multilevel inheritance is a type of inheritance in which one derived class is inherited from another derived class.
+example---Student-->Exam--->Result 
+
+#include <iostream>
+using namespace std;
+
+class student
+{
+protected:
+    int roll_number;
+
+public:
+    void set_roll_number(int);
+    void get_roll_number(void);
+};
+
+void student::set_roll_number(int a)
+
+{
+    roll_number = a;
+}
+
+void student ::get_roll_number()
+{
+    cout << "roll no. of the student is :" << roll_number << endl;
+}
+
+class Exam : public student
+{
+protected:
+    float maths, physics;
+
+public:
+    void set_marks(float, float);
+    void get_marks(void);
+};
+
+void Exam ::set_marks(float m, float p)
+{
+    maths = m;
+    physics = p;
+}
+
+void Exam ::get_marks()
+{
+    cout << "Marks in maths are: " << maths << endl;
+    cout << "Marks in physics are: " << physics << endl;
+}
+
+class Result : public Exam
+{
+    float percentage;
+
+public:
+    void display();
+};
+
+void Result ::display(void)
+{
+    get_roll_number();
+    get_marks();
+    cout << "Your percentage is :" << (maths + physics) / 2 << "%" << endl;
+}
+
+int main()
+{
+    Result r;
+    r.set_roll_number(420);
+    r.set_marks(90, 85);
+    r.display();
+    return 0;
+}
+_______________________________________________________________________________________________________
+*************Output*********************
+
+roll no. of the student is :420
+Marks in maths are: 90
+Marks in physics are: 85
+Your percentage is :87.5%
