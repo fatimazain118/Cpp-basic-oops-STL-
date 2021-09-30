@@ -1,0 +1,98 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+class SimpleCalculator
+{
+protected:
+    int num1, num2;
+
+public:
+    void getValue1();
+    void display()
+    {
+        cout << "\nSum of num1 and num2 is :" << num1 + num2 << endl;
+        cout << "Difference of num1 and num2 is :" << num1 - num2 << endl;
+        cout << "Multiplication of num1 and num2 is :" << num1 * num2 << endl;
+        cout << "Division of num1 and num2 is :" << num1 / num2 << endl;
+    }
+};
+
+void SimpleCalculator ::getValue1()
+{
+    cout << "Enter the value of num1 :" << endl;
+    cin >> num1;
+    cout << "Enter the value of num2 :" << endl;
+    cin >> num2;
+}
+
+class ScientificCalculator
+{
+protected:
+    int number1, number2;
+
+public:
+    void getValue()
+    {
+        cout << "Enter the value of number1 :" << endl;
+        cin >> number1;
+        cout << "Enter the value of number2 :" << endl;
+        cin >> number2;
+    }
+    void Display()
+    {
+        cout << "\nCosine of number1 is :" << cos(number1) << endl;
+        cout << "sine of number1 is :" << sin(number1) << endl;
+        cout << "tan of number1 is :" << tan(number1) << endl;
+        cout << "expo of number2 is :" << exp(number2) << endl;
+        cout << "log of number2 is :" << log(number2) << endl;
+    }
+};
+
+class HybridCalculator : public SimpleCalculator, public ScientificCalculator
+{
+protected:
+public:
+    void show()
+    {
+
+        cout << "\nThe value of num1 and num2 is :" << num1 << "," << num2 << endl;
+        cout << "Value of number1 is :" << number1 << endl;
+    }
+};
+
+int main()
+{
+    HybridCalculator h;
+    h.getValue1();
+    h.getValue();
+    h.show();
+    h.display();
+    h.Display();
+
+    return 0;
+}
+______________________________________________________________________________________________________________
+*************Output*****************
+Enter the value of num1 :
+6
+Enter the value of num2 :
+2
+Enter the value of number1 :
+30
+Enter the value of number2 :
+8
+
+The value of num1 and num2 is :6,2
+Value of number1 is :30
+
+Sum of num1 and num2 is :8
+Difference of num1 and num2 is :4
+Multiplication of num1 and num2 is :12
+Division of num1 and num2 is :3
+
+Cosine of number1 is :0.154251
+sine of number1 is :-0.988032
+tan of number1 is :-6.40533
+expo of number2 is :2980.96
+log of number2 is :2.07944
