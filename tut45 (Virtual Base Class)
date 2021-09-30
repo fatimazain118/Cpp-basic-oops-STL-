@@ -1,0 +1,104 @@
+/*Virtual Base Class in C++
+The virtual base class is a concept used in multiple inheritances to prevent ambiguity between multiple instances.
+For example: suppose we created a class “Student” and two classes “Test” and “Sports”, are being derived from class “Student”. But once we create a class “Result” which is
+being derived from class “Test” and “Sports” The main thing to note here is that the data members and member functions of class “Student” will be inherited twice in
+class “Result” because class “Test” and “Sports” are the parent classes of class “Result” and they both are being derived from class “Student”.
+
+So when the class “Result” will try to access the data member or member function of class “Student” it will cause ambiguity for the compiler and the compiler will throw
+an error. To solve this ambiguity we will make class “Student” as a virtual base class. To make a virtual base class “virtual” keyword is used.
+*/
+
+#include <iostream>
+using namespace std;
+
+class Student
+{
+protected:
+    int roll_number;
+
+public:
+    void set_roll_number(int a)
+    {
+        roll_number = a;
+    }
+    void display(void)
+    {
+        cout << "Your roll no. is : " << roll_number << "\n"
+             << endl;
+    }
+};
+
+class Test : virtual public Student
+{
+protected:
+    int maths, physics;
+
+public:
+    void set_marks(int m, int p)
+    {
+        maths = m;
+        physics = p;
+    }
+    void get_marks()
+    {
+        cout << "Your result is here :" << endl
+             << "Maths :" << maths << endl
+             << "Physics :" << physics << "\n"
+             << endl;
+    }
+};
+
+class Sports : public virtual Student
+{
+protected:
+    int score;
+
+public:
+    void set_score(int s)
+    {
+        score = s;
+    }
+    void get_score(void)
+    {
+        cout << "Your PT score is :" << score << "\n"
+             << endl;
+    }
+};
+
+class Result : public Sports, public Test
+{
+private:
+    int total;
+
+public:
+    void Display(void)
+    {
+        total = maths + physics + score;
+        cout << "Your final score is :" << total << endl;
+    }
+};
+
+int main()
+{
+    Result r;
+    r.set_roll_number(555);
+    r.display();
+    r.set_marks(90, 90);
+    r.get_marks();
+    r.set_score(100);
+    r.get_score();
+    r.Display();
+    return 0;
+}
+_____________________________________________________________________________________________________
+************Output***********************
+
+Your roll no. is : 555
+
+Your result is here :
+Maths :90
+Physics :90
+
+Your PT score is :100
+
+Your final score is :280
