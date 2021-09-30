@@ -1,0 +1,114 @@
+Ambiguity Resolution in Inheritance
+Ambiguity in inheritance can be defined as when one class is derived for two or more base classes then there are chances that the base classes have functions with the same name.
+So it will confuse derived class to choose from similar name functions. To solve this ambiguity scope resolution operator is used “::”
+
+#include <iostream>
+using namespace std;
+
+class base1
+{
+public:
+    void greet()
+    {
+        cout << "Good Morning" << endl;
+    }
+};
+class base2
+{
+public:
+    void greet()
+    {
+        cout << "Good Afternoon" << endl;
+    }
+};
+
+class Derived : public base1, public base2
+{
+public:
+    void greet()
+    {
+        base1 ::greet(); //base1 ka he greet return krna jab bhi call ho
+    }
+};
+
+int main()
+{
+    base1 b1; //b1 object of base1
+    b1.greet();
+
+    Derived d;
+    d.greet(); //This will create ambiguity
+    return 0;
+}
+__________________________________________________________________________________
+**********Output****************
+Good Morning
+Good Morning
+________________________________________________________________________________
+
+#include <iostream>
+using namespace std;
+
+class base
+{
+public:
+    void greet()
+    {
+        cout << "Hii" << endl;
+    }
+};
+
+class derived : public base
+{
+public:
+    void greet()
+    {
+        cout << "Hello World" << endl;
+    }
+};
+
+int main()
+{
+    derived d;
+    d.greet();
+    return 0;
+}
+_______________________________________________________________
+***********Output**************
+Hello World
+______________________________________________________________
+
+#include <iostream>
+using namespace std;
+
+class base
+{
+public:
+    void greet()
+    {
+        cout << "Hii" << endl;
+    }
+};
+
+class derived : public base
+{
+public:
+    // void greet()
+    // {
+    //     cout << "Hello World" << endl;
+    // }
+};
+
+int main()
+{
+    derived d;
+    d.greet();
+    return 0;
+}
+_________________________________________________________________
+*************Output*******************
+
+Hii                           /*The main thing to note here is that both “Base” and “Derived” classes have the same function “greet”, So if the class “Derived” will call the function 
+                                         “greet” it will override the base class “greet” method because compiler by default run the method which is already written in its own body.
+                                         But if the function “greet” was not present in the class “Derived” then the compiler will run the method of the class “Base”.
+                                         --> In this case compiler automatically resolves ambiguity*/
