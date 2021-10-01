@@ -1,0 +1,43 @@
+Initialization list in Constructors in C++
+The initialization list in constructors is another concept of initializing the data members of the class.
+/*
+Syntax for initialization list in constructor:
+constructor (argument-list) : initilization-section           
+{
+    assignment + other code;
+}
+
+In the initialization section, the data members are initialized, simply value dene ka tarika(syntax) hai pehle constructor k andr value assign krte the isme sath me assign krre
+
+*/
+
+#include <iostream>
+using namespace std;
+
+class Test
+{
+    int a, b;
+    public:
+    Test(int i, int j) : a(i), b(j)
+    
+     // Test(int i, int j) : a(i), b(i+j)
+    // Test(int i, int j) : a(i), b(2*j)
+     //Test(int i, int j) : a(i), b(a +j)     //b me use krre "a" ki value, kr skte coz "a" ki value pehle se available hogi 
+    // Test(int i, int j) : b(j), a(i+b)     //gives garbage value in "a" as "a" pehle declare hai to pehle he initialise hoga, agar "b" ko pehle declare krde to sahi se chalega 
+    {
+        cout<<"Constructor executed"<<endl;
+        cout<<"The value of a is :"<<a<<endl;
+        cout<<"The value of b is :"<<b<<endl;
+    }
+};
+
+int main()
+{
+    Test t(3,6);
+    return 0;
+}
+_______________________________________________________________
+**********Output************
+Constructor executed
+The value of a is :3
+The value of b is :6
