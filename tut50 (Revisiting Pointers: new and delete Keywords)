@@ -1,0 +1,63 @@
+Pointers in C++
+Pointers are variables that are used to store the address. Pointers are created using “*”
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a=4;
+    int* p = &a;
+    cout<<"Value of a is :"<<*(p)<<endl;
+
+    //***new keyword*****
+    int *ptr =new int(40);                     //We created a int pointer “ptr” and dynamically created a int which has value “40” and assigned that value to pointer “ptr”
+    cout<<"Value at address ptr is :"<<*(ptr)<<endl;
+    return 0;
+}
+_____________________________________________________________
+********Output**************
+Value of a is :4
+Value at address ptr is :40
+___________________________________________________________________
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int *arr = new int[3];          //We created an integer pointer “arr” and dynamically created an array of size three which is assigned to the pointer “arr”
+    arr[0] = 10;
+    arr[1] = 5;
+    arr[2] = 20;
+    cout << "The value of arr[0] is :" << arr[0] << endl;
+    cout << "The value of arr[1] is :" << arr[1] << endl;
+    cout << "The value of arr[2] is :" << arr[2] << endl;
+    return 0;
+}
+______________________________________________________________
+*******Output***********
+The value of arr[0] is :10
+The value of arr[1] is :5
+The value of arr[2] is :20
+______________________________________________________________
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int *arr = new int[3];
+    arr[0] = 10;
+    arr[1] = 5;
+    arr[2] = 20;
+    delete[] arr;
+    cout << "The value of arr[0] is :" << arr[0] << endl;
+    cout << "The value of arr[1] is :" << arr[1] << endl;
+    cout << "The value of arr[2] is :" << arr[2] << endl;
+    return 0;
+}
+_____________________________________________________________________
+**********Output*************
+The value of arr[0] is :17137448              //garbage value because we have used “delete” keyword before printing the values due to which the space used by an array gets
+                                                     free and we get the garbage value in return.
+The value of arr[1] is :17105088
+The value of arr[2] is :20
