@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int real, imaginary;
+
+public:
+    void get_Data()
+    {
+        cout << "The real part is " << real << endl;
+        cout << "The imaginary part is " << imaginary << endl;
+        cout << "complex no. is :" << real << "+" << imaginary << "i" << endl;
+    }
+    void set_Data(int a, int b)
+    {
+        real = a;
+        imaginary = b;
+    }
+};
+
+int main()
+{
+    // Complex c;
+    // c.set_Data(1,2);              //ye to pehle he dikha tha aise bhi kr skte ab pointers k helps se dekhengye member function kaise call krra hai
+    // c.get_Data();
+    
+    // Complex *ptr = &c;                //Pointers to Objects, 
+    
+    Complex *ptr = new Complex;         //new lga kr nya object bn jata hai basically In the main program object is created dynamically by using the “new” keyword and 
+                                            its address is assigned to the pointer “ptr”
+
+    // (*ptr).set_Data(1, 2);            //*ptr dereferencing, The main thing to note here is that we called the member function with pointers instead of object but still 
+                                              it will give same result because pointer is pointing to the address of that object.
+      (*ptr).get_Data();                //pointers se object k public members ko kaise access krte hai
+
+    ptr->set_Data(1, 2);                //The member function “setdata” is called using the pointer “ptr” with the arrow operator “->” and the values “1, 2” are passed.
+
+  
+    return 0;
+}
+______________________________________________________________________________________________________________
+*************Output*****************
+The real part is 1
+The imaginary part is 2
+complex no. is :1+2i
