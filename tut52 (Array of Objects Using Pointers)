@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+class Shop
+{
+    int price;
+    int id;
+
+public:
+    void setData(int a, int b)          //The class “Shop” contains two member functions “setdata” and “getdata”
+    {
+        price = a;
+        id = b;
+    }
+    void getData(void);
+};
+
+void Shop ::getData(void)
+{
+    cout << "The price of this item is :" << price << endl;
+    cout << "The id of this item is :" << id << endl;
+}
+
+int main()
+{
+    int size = 3;
+    //int *ptr = &size;
+    //int *ptr = new int [34]; as as for shop
+    Shop *ptr = new Shop[size];              //Shop *ptr me shop ko as a datatype ki trh use kia hai, *ptr me Shop k object ka address,
+                                            // (Array of objects of size “3” is created dynamically by using the “new” keyword and its address is assigned to the pointer “ptr”)
+    Shop *ptrTemp = ptr;                 //The address of pointer “ptr” is assigned to another pointer “ptrTemp”, we have done this coz last me jab 3 pr ane k bd ++ hoga to
+                                              kissi garbage address ko point krne lgega pointer isliye hmne dusra loop chalaya hai
+    int p, q;
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter Id and price of an item" << endl;
+        cin >> p >> q;
+
+        // (*ptr).setData(p,q);
+        ptr->setData(p, q);
+        ptr++;
+    }
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Item number :" << i + 1 << endl;
+        ptrTemp->getData();
+        ptrTemp++;
+    }
+    return 0;
+}
+_______________________________________________________________________________________________________________________
+************Output*****************
+Enter Id and price of an item
+100
+2
+Enter Id and price of an item
+300
+4
+Enter Id and price of an item
+400
+5
+Item number :1
+The price of this item is :100
+The id of this item is :2
+Item number :2
+The price of this item is :300
+The id of this item is :4
+Item number :3
+The price of this item is :400
+The id of this item is :5
