@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+class Base
+{
+
+public:
+    int var_base;
+    void Display()
+    {
+        cout << "Displaying Base Class variable var_base\n"
+             << var_base << endl;
+    }
+};
+
+class Derived : public Base
+{
+   
+
+public:
+ int var_Derived;
+    void Display()
+    {
+        cout << "Displaying Derived Class variable var_Derived\n"
+             << var_Derived << endl;
+        cout << "Displaying Base Class variable var_base\n"
+             << var_base << endl;
+    }
+};
+
+int main()
+{
+    Base obj_base;
+    Base *base_class_pointer;
+    Derived obj_derived;
+
+    base_class_pointer = &obj_derived;            //Pointing base class to derived class
+
+    base_class_pointer->var_base = 34;
+    base_class_pointer->Display();          //base class ka display function run hoga coz pointer to base class ka hai bss point derived class ko krra hai known as late binding
+    base_class_pointer->var_base = 3400;
+    base_class_pointer->Display();
+
+    // base_class_pointer->var_Derived = 134;  shows error
+
+    Derived * derived_class_pointer;
+    derived_class_pointer-> var_Derived =98;
+    derived_class_pointer->var_base =6700;  //The main thing to note here is that this will not throw an error because we can set the value of base class data member by 
+                                                using derived class pointer but we cannot set the value of derived class data member by using base class pointer
+    derived_class_pointer->Display();
+    return 0;
+}
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________
+************Output********************
+Displaying Base Class variable var_base
+34
+Displaying Base Class variable var_base
+3400
+Displaying Derived Class variable var_Derived
+98
+Displaying Base Class variable var_base
+6700
