@@ -1,0 +1,105 @@
+In this we'll see how virtual functions are used to implement run-time polymorphism. 
+
+#include <iostream>
+using namespace std;
+
+class CWH
+{
+protected:
+    string title;
+    float rating;
+
+public:
+    CWH(string s, float r)             //The class “CWH” has a parameterized constructor which takes two parameters “s” and “r” and assign their values to the data members 
+                                                 “title” and “rating”
+    {
+        title = s;
+        rating = r;
+    }
+    virtual void display() {                        //The class “CHW” has a virtual function void “display” which does nothing
+       // cout<<"Hi"<<endl;  agar virtual hta dia to Hii he do baar print hoga
+    } //blank qki video aur tutorial k liye alg alg hoga
+};
+
+class CWHVideo : public CWH
+{
+    float videolength;
+
+public:
+    CWHVideo(string s, float r, float vl) : CWH(s, r)       //by constructor in derived class  (The class “CWHVideo” has a parameterized constructor which takes three
+                                                        parameters “s”, “r” and “vl”. The constructor of the base class is called in the derived class and the values of the
+                                                        variables “s” and “r” are passed to it.The value of the parameter “vl” will be assigned  to the data members “videoLength”
+    {
+        videolength = vl;
+    }
+    void display()
+    {
+        cout << "This is an amazing video with title : " << title << endl;
+        cout << "Rating of video : " << rating << " out of 5 stars" << endl;
+        cout << "Length of video is : " << videolength << " minutes" << endl;
+    }
+};
+
+class CWHText : public CWH
+{
+    int words;
+
+public:
+    CWHText(string s, float r, int w) : CWH(s, r) //by constructor in derived class
+    {
+        words = w;
+    }
+    void display()
+    {
+        cout << "\nThis is an amazing text tutorial with title : " << title << endl;
+        cout << "Rating of Text Tutorial is : " << rating << " out of 5 stars" << endl;
+        cout << "No. of words in Text Tutorial is : " << words << " words" << endl;
+    }
+};
+
+int main()
+{
+    string title;
+    float rating, vlen;
+    int words;
+
+    //for code with harry Video
+    title = "C++ tutorial";
+    vlen = 30.5;
+    rating = 4.8;
+    CWHVideo video(title, rating, vlen);
+    //video.display();    this is normal but we'll call using pointers
+
+    //for code with harry Text
+    title = "C++ tutorial";
+    words = 30;
+    rating = 4.8;
+    CWHText Text(title, rating, words);
+    //Text.display();
+
+    CWH *tuts[2];
+    tuts[0] = &video;
+    tuts[1] = &Text;
+
+    tuts[0]->display();     //base class me virtual lgaya tha isliye jisse point krre us k apne apne display call hongye
+    tuts[1]->display();    //point 5 agar derived class me nhi milla display function to base class yhi apna call krdo
+
+    return 0;
+}
+________________________________________________________________________________________________________________________________________
+******Output************
+This is an amazing video with title : C++ tutorial
+Rating of video : 4.8 out of 5 stars
+Length of video is : 30.5 minutes
+
+This is an amazing text tutorial with title : C++ tutorial   
+Rating of Text Tutorial is : 4.8 out of 5 stars
+No. of words in Text Tutorial is : 30 words
+__________________________________________________________________________________________________
+
+Rules for virtual functions
+-->They cannot be static
+-->They are accessed by object pointers
+-->Virtual functions can be a friend of another class
+-->A virtual function in the base class might not be used.
+-->If a virtual function is defined in a base class, there is no necessity of redefining it in the derived class
