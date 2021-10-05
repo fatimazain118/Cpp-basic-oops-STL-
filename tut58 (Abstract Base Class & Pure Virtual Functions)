@@ -1,0 +1,100 @@
+Pure Virtual Functions in C++
+Pure virtual function is a function that doesn’t perform any operation and the function is declared by assigning the value 0 to it. Pure virtual functions are declared in 
+abstract classes.
+
+Abstract Base Class in C++
+Abstract base class is a class that has at least one pure virtual function in its body. The classes which are inheriting the base class must need to override the virtual 
+function of the abstract class otherwise compiler will throw an error.
+
+
+#include <iostream>
+using namespace std;
+
+class CWH
+{
+protected:
+    string title;
+    float rating;
+
+public:
+    CWH(string s, float r)
+    {
+        title = s;
+        rating = r;
+    }
+    virtual void display()=0; //The class “CHW” has a pure virtual function void “display” which is declared by 0. The main thing to note here is that as the “display” function
+                                       is a pure virtual function it is compulsory to redefine it in the derived classes.
+};
+
+class CWHVideo : public CWH
+{
+    float videolength;
+
+public:
+    CWHVideo(string s, float r, float vl) : CWH(s, r) //The constructor of the base class is called in the derived class 
+    {
+        videolength = vl;
+    }
+    void display()
+    {
+        cout << "This is an amazing video with title : " << title << endl;
+        cout << "Rating of video : " << rating << " out of 5 stars" << endl;
+        cout << "Length of video is : " << videolength << " minutes" << endl;
+    }
+};
+
+class CWHText : public CWH
+{
+    int words;
+
+public:
+    CWHText(string s, float r, int w) : CWH(s, r) //by constructor in derived class
+    {
+        words = w;
+    }
+    void display()
+    {
+        cout << "\nThis is an amazing text tutorial with title : " << title << endl;
+        cout << "Rating of Text Tutorial is : " << rating << " out of 5 stars" << endl;
+        cout << "No. of words in Text Tutorial is : " << words << " words" << endl;
+    }
+};
+
+int main()
+{
+    string title;
+    float rating, vlen;
+    int words;
+
+    //for code with harry Video
+    title = "C++ tutorial";
+    vlen = 30.5;
+    rating = 4.8;
+    CWHVideo video(title, rating, vlen);
+    //video.display();    this is normal but we'll call using pointers
+
+    //for code with harry Text
+    title = "C++ tutorial";
+    words = 30;
+    rating = 4.8;
+    CWHText Text(title, rating, words);
+    //Text.display();
+
+    CWH *tuts[2];
+    tuts[0] = &video;
+    tuts[1] = &Text;
+
+    tuts[0]->display();    
+    tuts[1]->display();    //point 5 agar derived class me nhi milla display function to base class yhi apna call krdo
+
+    return 0;
+}
+_______________________________________________________________________________________________________________________________________
+***Output************
+This is an amazing video with title : C++ tutorial
+Rating of video : 4.8 out of 5 stars
+Length of video is : 30.5 minutes
+
+This is an amazing text tutorial with title : C++ tutorial   
+Rating of Text Tutorial is : 4.8 out of 5 stars
+No. of words in Text Tutorial is : 30 words
