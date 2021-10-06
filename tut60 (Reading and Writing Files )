@@ -1,0 +1,54 @@
+These are some useful classes for working with files in C++
+
+fstreambase
+ifstream --> derived from fstreambase
+ofstream --> derived from fstreambase
+
+In order to work with files in C++, you will have to open it. Primarily, there are 2 ways to open a file:
+
+--> Using the constructor
+--> Using the member function open() of the class
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    string st = "Writing this into the sample60.txt file";
+
+    // Opening files using constructor and writing it
+    ofstream out("sample60.txt"); // Write operation   Object “out” is created of the type ofstream and the file “sample60.txt” is passed to it
+    out << st;                    //The string “st” is passed to object “out”
+
+    return 0;
+}
+___________________________________________________________________________________
+*****In sample60.txt file***********
+Writing this into the sample60.txt file
+_________________________________________________________________________________
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+  string st2;      //We have created a string “st2” which is empty
+     
+     //We have made a text file “sample60b.txt” and written “Reading from this file” in it
+
+    //Opening files using constructor and reading it
+    ifstream in("sample60b.txt");                  //(Object “in” is created of the type instream and the file “sample60b.txt” is passed to it)
+    // in>>st2;   to get full line we'll use getline function inplace of this  
+    getline(in,st2);
+
+    cout<<st2;  //here only 1st word will be printed
+
+    return 0;
+}
+_________________________________________________________________________________________________________
+*********Output********
+Reading from this file                  //here we'll get the contain of sample60b.txt line by line
