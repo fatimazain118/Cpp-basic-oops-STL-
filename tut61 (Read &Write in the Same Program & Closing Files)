@@ -1,0 +1,39 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+    ofstream hout("sample60.txt");
+    string name;
+    cout<<"Enter your name"<<endl;
+    cin>>name;
+    hout<<name + " is my name";
+    hout.close();
+    return 0;
+}
+__________________________________________________________
+***********Output************
+Enter your name
+Zainabb
+*******In Sample60.txt file we'll get*********
+Zainabb is my name
+___________________________________________________________________
+
+#include<iostream>
+#include<fstream>
+using namespace std;
+
+int main()
+{
+
+    ifstream hin("sample60.txt");
+    string content;
+    hin>>content;
+    cout<<"The content of this file is :"<<content;
+    hin.close();
+    return 0;
+}
+________________________________________________________________________
+***********Output********************
+The content of this file is :Zainabb           
