@@ -1,0 +1,51 @@
+#Reading and writing file using open function of the objects
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ofstream out;
+    out.open("sample60.txt");
+    out << "This is me\n";                     //writting to file
+    out << "This is me also\n";
+    out << "This is also me\n";
+    out.close();
+    return 0;
+}
+__________________________________________________
+********Output*******
+In sample60.txt file we'll get
+This is me
+This is me also
+This is also me
+___________________________________________________________________
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+#include<string>
+int main()
+{
+  ifstream in;                       // declaring an object of the type ifstream
+    string str;
+    in.open("sample60.txt");                      //Reading from a file i.e opening the text file into in
+    // in>>str;
+    // cout<<str;   this will print word by word
+
+    while (in.eof() == 0)             //eof is end of file
+    {
+        getline(in, str);                    // We’ll use getline to store the whole line in the string variable str. Don’t forget to include the header file <string>.
+        cout << str << endl;
+    }
+
+    in.close();
+    return 0;
+}
+________________________________________________________________________
+***********output*************
+This is me
+This is me also
+This is also me
