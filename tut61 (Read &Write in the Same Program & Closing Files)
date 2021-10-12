@@ -2,11 +2,13 @@
 #include<fstream>
 using namespace std;
 
+//Writing into the file
+
 int main()
 {
-    ofstream hout("sample60.txt");
+    ofstream hout("sample60.txt");                   //ofstream for reading, hout ki jagah kch aur bhi le skte hai works just like cout
     string name;
-    cout<<"Enter your name"<<endl;
+    cout<<"Enter your name"<<endl;                  
     cin>>name;
     hout<<name + " is my name";
     hout.close();
@@ -20,6 +22,8 @@ Zainabb
 Zainabb is my name
 ___________________________________________________________________
 
+//Reading from file
+
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -27,11 +31,11 @@ using namespace std;
 int main()
 {
 
-    ifstream hin("sample60.txt");
-    string content;
+    ifstream hin("sample60.txt");       //connecting our file with hin stream
+    string content;                            // creating a content string variable and filling it with string present there in the text file
     hin>>content;
     cout<<"The content of this file is :"<<content;
-    hin.close();
+    hin.close();                    //disconnecting file
     return 0;
 }
 ________________________________________________________________________
