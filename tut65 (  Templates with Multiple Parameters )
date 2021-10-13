@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+template <class T1, class T2>  //like this we can create multiple custom datatype
+class myClass
+{
+public:
+    T1 data1;    //We have declared data1 and data2 with data types T1 and T2 respectively. 
+    T2 data2;
+    myClass(T1 a, T2 b)
+    {
+        data1 = a;
+        data2 = b;
+    }
+    void display()
+    {
+        cout << "Your data is:" << endl;
+        cout << "data1 is : " << data1 << endl;
+        cout << "data2 is : " << data2;
+    }
+};
+
+int main()
+{
+    myClass<char, int> obj('C', 2);
+    obj.display();
+    return 0;
+}
+__________________________________________________________________________
+***************Output************
+Your data is:
+data1 is : C
+data2 is : 2
+
+//To give you a short overview of how templates work with multiple parameters, you can think of it as a function where you have that power to pass different parameters of 
+the same or different data types. 
+//, just don’t miss out the commas while defining the parameters in a template
