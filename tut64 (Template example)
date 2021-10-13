@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+class vector
+{
+public:
+    int *arr;
+    int size;
+    vector(int m)
+    {
+        size = m;
+        arr = new int[size];
+    }
+    int dotProduct(vector &v)
+    {
+        int d = 0;
+        for (int i = 0; i < size; i++)
+        {
+            d += this->arr[i] * v.arr[i];
+        }
+        return d;
+    }
+};
+
+int main()
+{
+    vector v1(3); //vector1
+    v1.arr[0] = 2;
+    v1.arr[1] = 1;
+    v1.arr[2] = 1;
+    vector v2(3);
+    v2.arr[0] = 1;
+    v2.arr[1] = 0;
+    v2.arr[2] = 1;
+    int a = v1.dotProduct(v2);
+    cout<<"DotProduct is:"<<endl;
+    cout << a << endl;
+    return 0;
+}
+//So, this was all about creating a class and an embedded function to calculate the dot product of two integer vectors. But this program would obviously fail to calculate the dot products for some different data types. It would demand an entirely different class. But we’ll save ourselves the effort and the time by declaring a template. 
+
+__________________________________________________________
+**********Output***********
+DotProduct is:
+3
+______________________________________________________________
+#include <iostream>
+using namespace std;
+template <class T>
+class vector
+{
+public:
+    T *arr;
+    int size;
+    vector(int m)
+    {
+        size = m;
+        arr = new T[size];
+    }
+    int dotProduct(vector &v)
+    {
+        int d = 0;
+        for (int i = 0; i < size; i++)
+        {
+            d += this->arr[i] * v.arr[i];
+        }
+        return d;
+    }
+};
+
+int main()
+{
+    vector<int> v1(3); //vector1 , for any data type you can make class
+    v1.arr[0] = 2;
+    v1.arr[1] = 1;
+    v1.arr[2] = 1;
+    vector<int> v2(3);
+    v2.arr[0] = 1;
+    v2.arr[1] = 0;
+    v2.arr[2] = 1;
+    int a = v1.dotProduct(v2);
+    cout<<"DotProductt is:"<<endl;
+    cout << a << endl;
+    return 0;
+}
+____________________________________________________________________________
+***********Output************
+DotProductt is:
+3
+
