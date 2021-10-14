@@ -1,0 +1,48 @@
+// Its ability to have default specifications about the data type, when it receives no arguments from the main.
+//This ensures that if the user doesn’t put any data type in main, default ones get considered. 
+//The constructor accepts the values featured by the main, and assigns them to our class variables a, b and c. If the user specifies the data types along with the values,
+the compiler assigns them to T1 , T2 and T3, otherwise gives them the default ones, as specified while declaring the template itself.
+
+
+#include <iostream>
+using namespace std;
+
+template <class T1 = int, class T2 = float, class T3 = char> //default parameters
+class Zainab
+{
+public:
+    T1 a;
+    T2 b;
+    T3 c;
+    Zainab(T1 x, T2 y, T3 w)
+    {
+        a = x;
+        b = y;
+        c = w;
+    }
+    void display()
+    {
+        cout << "The value of a is: " << a << endl;
+        cout << "The value of b is: " << b << endl;
+        cout << "The value of c is: " << c << endl;
+    }
+};
+
+int main()
+{
+    Zainab<> z(1, 2.3, 'd'); //default hai isliye ye angular bracket khali chr skte hai pr template k wajese lga pdega
+    z.display();
+    cout << endl;
+    Zainab<char, int, float> g('c', 2, 3.3);
+    g.display();
+    return 0;
+}
+______________________________________________________________________________________________________________
+************Output****************
+The value of a is: 1
+The value of b is: 2.3
+The value of c is: d
+
+The value of a is: c
+The value of b is: 2
+The value of c is: 3.3
