@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+float functionAvg(int a, int b)
+{
+    float c = (a + b) / 2.0;
+    return c;
+}
+
+float functionAvg2(int a, float b)
+{
+    float c = (a + b) / 2.0;
+    return c;
+}
+
+int main()
+{
+    float z = functionAvg(2, 2);
+    printf("The average of these no. is : %.3f", z); //we can use print also point k bd 3 digits print krne hai
+    printf("\n");
+
+    float y = functionAvg2(5, 2.4);
+    printf("The average of these no. is : %.3f", y); 
+    return 0;
+}
+//But the effort we made here defining a single function for two integers increases several folds when we demand for a similar function for two floats, or one float and one 
+integer or many more data type combinations. We just cannot repeat the procedure and violate our DRY rule. We’ll use function templates very similar to what we did when we
+had to avoid defining more classes.
+____________________________________________________________________________________________________________________________
+***************Output**********
+The average of these no. is : 2.000
+The average of these no. is : 3.700
+________________________________________________________________________________________________________
+//using template
+//We’ll first declare a template with two data type parameters T1 and T2. And replace the data types we mentioned in the function with them. And that’s it. Our function has 
+become general for all sorts of data types.
+
+
+#include <iostream>
+using namespace std;
+template <class T1, class T2>
+float functionAvg(T1 a, T2 b)
+{
+    float c = (a + b) / 2.0;
+    return c;
+}
+
+int main()
+     {
+       float y = functionAvg(5, 2.4);
+printf("The average of these no. is : %.3f", y);
+return 0;
+}
+_________________________________________________________________
+***********Output***********
+The average of these no. is : 3.700
+___________________________________________________________________
+//swap using templates
+
+#include <iostream>
+using namespace std;
+template <class T>
+void swapp(T &a, T &b)
+{
+    T temp = a;
+    a = b;
+    b = temp;
+}
+int main()
+{
+int x = 5, y = 7;
+    swapp(x, y);
+    cout << "after swapp no. are :" << x << endl
+         << y;
+    return 0;
+}
+_____________________________________________________________________
+***********Output*************
+after swapp no. are :7
+5
+
+
+
+     
