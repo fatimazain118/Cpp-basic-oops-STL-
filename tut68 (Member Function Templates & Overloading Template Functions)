@@ -1,0 +1,61 @@
+//Here, we first write the function declaration in the class itself. Then move to the outside and use the scope resolution operator before the function and after the name
+of the class Harry along with the data type T. We must specify the function data type, which is void here. And it must be preceded by the template declaration for class T.
+
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Zainab
+{
+public:
+    T data;
+    Zainab(T a)                // make a constructor feeding the value received from the main to data.
+    {
+        data = a;
+    }
+    void display();
+};
+
+template <class T>
+void Zainab<T>::display()            //declare a template function outside a using the scope resolution operator, ‘::’
+{
+    cout << "Your Data is :" << data;
+}
+
+int main()
+{
+    Zainab<int> z(3);
+    z.display();
+    return 0;
+}
+__________________________________________________________________
+**************Output**************
+Your Data is :3
+______________________________________________________________________
+//Overloading a function simply means assigning two or more functions with the same name, the same job, but with different parameters.
+
+#include <iostream>
+using namespace std;
+void func(int a)
+{
+    cout << "I'm first func(): " <<a << endl;
+}
+
+template <class T>
+void func(T a)
+{
+    cout << "I'm Templatised func(): " << a << endl;
+}
+
+int main()
+{
+ func('c');
+    func(4);           //Exact match takes the highest priority
+    func(4.6);
+    return 0;
+}
+______________________________________________________________________
+***********Output***************
+I'm Templatised func(): c
+I'm first func(): 4
+I'm Templatised func(): 4.6
