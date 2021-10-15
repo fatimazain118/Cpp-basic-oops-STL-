@@ -1,0 +1,40 @@
+//Map is one of the most important STL containers we will use.
+//A map in C++ STL is an associative container which stores key value pairs. To elaborate, a map stores a key of some data type and its corresponding values of some data type.
+For example: a teacher wants to store the marks of students which in future can be accessed by their names. 
+The syntax for declaring a map is:
+
+map <data_type_of_key,   data_type_of_value>  variable_name;
+
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+int main()
+{
+    map<string, int> marksMap;
+    marksMap["Harry"] = 77;
+    marksMap["Zainab"] = 100;
+    marksMap["Fatima"] = 7;
+    marksMap.insert({{"Kia", 33}, {"Sia", 88}}); //to insert
+
+    map<string, int>::iterator itr; //marks ko print krane k liye iterator use kia hai
+    for (itr = marksMap.begin(); itr != marksMap.end(); itr++)
+    {
+        cout << (*itr).first << " " << (*itr).second << "\n"; //first method se key second se value pair print hojaiga, ye itr is key-value pair ko point krra aur *itr wo value return krega
+    }
+    cout << "The size is :" << marksMap.size() << endl;        //the size() method to get the size of the map container
+    cout << "The max size is :" << marksMap.max_size() << endl;
+    cout << "The empty's return value is :" << marksMap.empty() << endl; //return 0 coz it's not empty , empty() method to check if the map container is empty or not, and it returns a boolean
+    return 0;
+}
+__________________________________________________________________________________________________________________________________________________________________________________________________
+******************Output*******************
+Fatima 7
+Harry 77
+Kia 33
+Sia 88
+Zainab 100
+The size is :5
+The max size is :97612893
+The empty's return value is :0
